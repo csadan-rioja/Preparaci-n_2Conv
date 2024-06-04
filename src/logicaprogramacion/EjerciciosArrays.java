@@ -1,4 +1,4 @@
-package paquete1;
+package logicaprogramacion;
 
 import java.util.ArrayList;
 
