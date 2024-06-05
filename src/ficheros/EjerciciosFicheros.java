@@ -6,7 +6,7 @@ import java.io.IOException;
 public class EjerciciosFicheros {
 
 	public static void main(String[] args) {
-		generarArbolDirectorios();
+		mostrarContenidoDirectorio(new File("Directorio1"));
 	}
 
 	/**
@@ -18,7 +18,6 @@ public class EjerciciosFicheros {
 	public static void generarArbolDirectorios() {
 		try {
 			File directorio1 = new File("Directorio1");
-
 			if (directorio1.mkdir()) {
 				System.out.println("Directorio llamado Directorio 1 creado");
 			}
@@ -28,12 +27,12 @@ public class EjerciciosFicheros {
 			if (fichero1.createNewFile()) {
 				System.out.println("Fichero llamado fichero1.txt creado");
 			}
-
 			File fichero2 = new File(directorio1, "fichero2.txt");
 			if (fichero2.createNewFile()) {
 				System.out.println("Fichero llamado fichero2.txt creado");
 			}
-
+			
+			
 			File directorio2 = new File(directorio1, "Directorio2");
 			if (directorio2.mkdir()) {
 				System.out.println("Directorio llamado Directorio2 creado");
@@ -55,11 +54,30 @@ public class EjerciciosFicheros {
 	public static void mostrarInformacionFichero(File f) {
 		
 		if(f.exists() && f.isFile()) {
-			System.out.println(f.get....);
+			System.out.println(f.getAbsolutePath());
+			System.out.println(f.getName());
+			System.out.println(f.canRead());
 			
 			
 		}else {
 			System.out.println("El parametro no es un fichero o no existe");
+		}
+		
+	}
+	
+	/**
+	 * Mostrar el contenido de un directorio
+	 * */
+	public static void mostrarContenidoDirectorio(File d) {
+		
+		if(d.exists() && d.isDirectory()) {
+			
+			File[] listaFicheroDirectorios = d.listFiles();
+			
+			for (int i = 0; i < listaFicheroDirectorios.length; i++) {
+				System.out.println(listaFicheroDirectorios[i].getName());
+			}
+			
 		}
 		
 	}
